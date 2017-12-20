@@ -59,7 +59,8 @@ var executeBtn = document.querySelector('.execute');
 // Menus
 var encryptionMenuBtn = document.getElementsByName("encryptionmenu")[0];
 var encodingMenuBtn = document.getElementsByName("encodingmenu")[0];
-var extraMenuBtn = document.getElementsByName("extramenu")[0];
+var otherMenuBtn = document.getElementsByName("othermenu")[0];
+var xssMenuBtn = document.getElementsByName("xssmenu")[0];
 
 // Encoding
 var b64encodeBtn = document.getElementsByName("base64encode")[0];
@@ -77,8 +78,16 @@ var sha1hashBtn = document.getElementsByName("sha1hash")[0];
 var sha256hashBtn = document.getElementsByName("sha256hash")[0];
 var rot13Btn = document.getElementsByName("rot13")[0];
 
-// Extras
+// Other
+var stripspacesBtn = document.getElementsByName("stripspaces")[0];
+var stripslashesBtn = document.getElementsByName("stripslashes")[0];
 var extractlinksBtn = document.getElementsByName("extractlinks")[0];
+var strreverseBtn = document.getElementsByName("strreverse")[0];
+
+// XSS
+var strcharcodeBtn = document.getElementsByName("strcharcode")[0];
+var htmlcharsBtn = document.getElementsByName("htmlchars")[0];
+var xssalertBtn = document.getElementsByName("xssalert")[0];
 
 var postdataCbx = document.getElementsByName("enablepostdata")[0];
 var refererCbx = document.getElementsByName("enablereferer")[0];
@@ -94,6 +103,8 @@ currentFocusField = urlfield;
 anonClickMenuFunct = function ( event ) { onClickMenu( event ); }
 encryptionMenuBtn.addEventListener('mouseover', onMouseOverMenu, false);
 encodingMenuBtn.addEventListener('mouseover', onMouseOverMenu, false);
+otherMenuBtn.addEventListener('mouseover', onMouseOverMenu, false);
+xssMenuBtn.addEventListener('mouseover', onMouseOverMenu, false);
 b64encodeBtn.addEventListener('click', anonClickMenuFunct, false);
 b64decodeBtn.addEventListener('click', anonClickMenuFunct, false);
 urlencodeBtn.addEventListener('click', anonClickMenuFunct, false);
@@ -106,7 +117,13 @@ hexencodeBtn.addEventListener('click', anonClickMenuFunct, false);
 hexdecodeBtn.addEventListener('click', anonClickMenuFunct, false);
 binaryencodeBtn.addEventListener('click', anonClickMenuFunct, false);
 binarydecodeBtn.addEventListener('click', anonClickMenuFunct, false);
+stripslashesBtn.addEventListener('click', anonClickMenuFunct, false);
+stripspacesBtn.addEventListener('click', anonClickMenuFunct, false);
 extractlinksBtn.addEventListener('click', anonClickMenuFunct, false);
+strreverseBtn.addEventListener('click', anonClickMenuFunct, false);
+strcharcodeBtn.addEventListener('click', anonClickMenuFunct, false);
+htmlcharsBtn.addEventListener('click', anonClickMenuFunct, false);
+xssalertBtn.addEventListener('click', anonClickMenuFunct, false);
 
 postdataCbx.addEventListener('change', togglepostdata);
 refererCbx.addEventListener('change', togglereferer);
@@ -198,15 +215,79 @@ function onClickMenu(event) {
       var newString = Encrypt.fromBinary(txt);
       this.setSelectedText( newString );
       break;
+    case 'stripslashes':
+      var txt = this.getSelectedText();
+      var re = new RegExp("/", 'g');
+      var newString = txt.replace(re, '');
+      this.setSelectedText( newString );      
+      break;
+    case 'stripspaces':
+      var txt = this.getSelectedText();
+      var re = new RegExp(" ", 'g');
+      var newString = txt.replace(re, '');
+      this.setSelectedText( newString ); 
+      break;
+    case 'extractlinks':
+      browser.tabs.query({active:true,currentWindow:true}).then(function(tabs){
+        var currentTabUrl = tabs[0].url;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // Action to be performed when the document is read;
+          var rawHTML = xhttp.responseText;
+          var re = new RegExp("[https]+\:\/\/[a-zA-Z0-9\-\.\_]+\/[a-zA-Z0-9\-\.\_/]+", 'g');
+          var result;
+          while (result = re.exec(rawHTML)){
+            urlfield.value += result + "\n";
+          }
+        }
+        };
+        xhttp.open("GET", currentTabUrl, true);
+        xhttp.send(); 
+
+      });
+      break;
+    case 'strreverse':
+      var txt = this.getSelectedText();
+      var newString = txt.split("").reverse().join("");
+      this.setSelectedText( newString ); 
+      break;
+    case 'strcharcode':
+      var txt = this.getSelectedText();
+      var chars = txt.split("");
+      output = "";
+      for(i=0;i<chars.length;i++){
+        var code = String.charCodeAt(chars[i]);
+        output += code+",";
+      }
+      var newString = "String.fromCharCode("+output+")";
+      newString = newString.replace(",)",")");
+      this.setSelectedText( newString );
+      break;
+    case 'htmlchars':
+      var txt = this.getSelectedText();
+      var chars = txt.split("");
+      var output = "";
+      for(i=0;i<chars.length;i++){
+        var code = String.charCodeAt(chars[i]);
+        output += "&#"+code+";";
+      }
+      this.setSelectedText( output );
+      break;
+    case 'xssalert':
+      var txt = this.getSelectedText();
+      var newString = "<script>alert('"+txt+"')</script>";
+      this.setSelectedText( newString );
+      break;
   }
 
-  var dropdowns = document.getElementsByClassName("dropdown-content");
+  /*var dropdowns = document.getElementsByClassName("dropdown-content");
   var i;
   for (i = 0; i < dropdowns.length; i++) {
     var openDropdown = dropdowns[i];
     openDropdown.style.visibility = "hidden";
   }
-  currentFocusField.focus();
+  currentFocusField.focus();*/  
 }
 
 /****** Load settings *****/
