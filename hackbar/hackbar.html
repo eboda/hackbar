@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="newhackbar.css"/>
+    <link rel="stylesheet" href="hackbar.css"/>
   </head>
 <body>
   <div>
@@ -23,6 +23,10 @@
         <li><a name="base64decode" style="background: url('skin/uud.png');background-repeat: no-repeat;">Base64 Decode</a></li>
         <li><a name="urlencode" style="background: url('skin/urle.png');background-repeat: no-repeat;">Url Encode</a></li>
         <li><a name="urldecode" style="background: url('skin/urld.png');background-repeat: no-repeat;">Url Decode</a></li>
+        <li><a name="hexencode">Hex Encode</a></li>
+        <li><a name="hexdecode">Hex Decode</a></li> 
+        <li><a name="binaryencode">Binary Encode</a></li>
+        <li><a name="binarydecode">Binary Decode</a></li>        
       </ul>
     </li>
   </ul>
@@ -32,14 +36,15 @@
   <button class="split">Split</button>
   <button class="execute">Run</button></div>
   <textarea spellcheck="false" class = "urlfield"></textarea><br>
-  <div><label><input type="checkbox" name="enablepostdata" value="">Enable Post data</label></div>
-  <textarea spellcheck="false" class = "postdatafield hiddenfied"></textarea>
+  <div><label><input type="checkbox" name="enablepostdata" value="">Enable Post Data</label></div>
+  <textarea spellcheck="false" class = "postdatafield hiddenfield"></textarea>
   <div><label><input type="checkbox" name="enablereferer" value="">Enable Referer</label></div>
-  <textarea spellcheck="false" class = "refererfield hiddenfied"></textarea>
+  <textarea spellcheck="false" class = "refererfield hiddenfield"></textarea>
   <div class="footer">
-    <a href="http://fosec.vn" target="_blank">Power by mxcx@fosec.vn</a>
+    Modified by <a href="https://twitter.com/totallynotdls">DLS</a>, credits to <a href="http://fosec.vn" target="_blank">mxcx@fosec.vn</a><br>
+    Source: <a href="https://github.com/notdls/hackbar">https://github.com/notdls/hackbar</a>
   </div>
-  <script src="newhackbar.js"></script>
+  <script src="hackbar.js"></script>
   <script src="Encrypt.js"></script>
 </body>
 
