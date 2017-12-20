@@ -15,7 +15,7 @@ p {
   margin: 1em 2em;
 }
 
-.urlfield, .postdatafield, .refererfield {
+.urlfield, .postdatafield, .refererfield, .extrafield {
   height: 100px;
   resize: vertical;
   margin: 0.2em;
@@ -23,12 +23,12 @@ p {
   transition: background-color .2s ease-out;
 }
 
-.hiddenfied {
+.hiddenfield {
   visibility : hidden;
   position : absolute;
 }
 
-.urlfield[contenteditable=true], .postdatafield[contenteditable=true], .refererfield[contenteditable=true] {
+.urlfield[contenteditable=true], .postdatafield[contenteditable=true], .refererfield[contenteditable=true], .extrafield[contenteditable=true] {
   background-color: white;
   transition: background-color .2s ease-in;
 }
@@ -129,7 +129,7 @@ button {
 #primary_nav_wrap ul ul li
 {
   float:none;
-  width:140px
+  width:140px;
 }
 
 #primary_nav_wrap ul ul a
@@ -141,16 +141,16 @@ button {
 #primary_nav_wrap ul ul ul
 {
   top:0;
-  left:100%
+  left:100%;
 }
 
 #primary_nav_wrap ul li:hover > ul
 {
-  display:block
+  display:block;
 }
 
 .dropdown-content {
-  visibility = "hidden";
+  visibility:"hidden";
 }
 
 .footer {
