@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "HackBar",
+  "name": "HackBar Quantum",
   "description": "A sitebar that helps pentesters to perform manual web security testing inside their browser. This addon is writed in webextension and alternatives to the XUL version of original Hackbar.",
-  "version": "1.0.5",
+  "version": "1.0",
   "applications": {
     "gecko": {
       "strict_min_version": "57.0"
@@ -21,7 +21,7 @@
 
   "sidebar_action": {
     "default_icon": "icons/hackbar_48.png",
-    "default_title" : "HackBar",
+    "default_title" : "HackBar Quantum",
     "default_panel": "hackbar/hackbar.html"
   },
 
