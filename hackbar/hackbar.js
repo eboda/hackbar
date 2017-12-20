@@ -50,22 +50,35 @@ browser.windows.getCurrent({populate: true}).then((windowInfo) => {
   updateContent();
 });
 
-/**** Main Processs  ***/
+/**** Main Process  ***/
 
 var loadurlBtn = document.querySelector('.loadurl');
 var splitBtn = document.querySelector('.split');
 var executeBtn = document.querySelector('.execute');
 
+// Menus
 var encryptionMenuBtn = document.getElementsByName("encryptionmenu")[0];
 var encodingMenuBtn = document.getElementsByName("encodingmenu")[0];
+var extraMenuBtn = document.getElementsByName("extramenu")[0];
+
+// Encoding
 var b64encodeBtn = document.getElementsByName("base64encode")[0];
 var b64decodeBtn = document.getElementsByName("base64decode")[0];
 var urlencodeBtn = document.getElementsByName("urlencode")[0];
 var urldecodeBtn = document.getElementsByName("urldecode")[0];
+var hexencodeBtn = document.getElementsByName("hexencode")[0];
+var hexdecodeBtn = document.getElementsByName("hexdecode")[0];
+var binaryencodeBtn = document.getElementsByName("binaryencode")[0];
+var binarydecodeBtn = document.getElementsByName("binarydecode")[0];
+
+// Encryption
 var md5hashBtn = document.getElementsByName("md5hash")[0];
 var sha1hashBtn = document.getElementsByName("sha1hash")[0];
 var sha256hashBtn = document.getElementsByName("sha256hash")[0];
 var rot13Btn = document.getElementsByName("rot13")[0];
+
+// Extras
+var extractlinksBtn = document.getElementsByName("extractlinks")[0];
 
 var postdataCbx = document.getElementsByName("enablepostdata")[0];
 var refererCbx = document.getElementsByName("enablereferer")[0];
@@ -89,6 +102,11 @@ md5hashBtn.addEventListener('click', anonClickMenuFunct, false);
 sha1hashBtn.addEventListener('click', anonClickMenuFunct, false);
 sha256hashBtn.addEventListener('click', anonClickMenuFunct, false);
 rot13Btn.addEventListener('click', anonClickMenuFunct, false);
+hexencodeBtn.addEventListener('click', anonClickMenuFunct, false);
+hexdecodeBtn.addEventListener('click', anonClickMenuFunct, false);
+binaryencodeBtn.addEventListener('click', anonClickMenuFunct, false);
+binarydecodeBtn.addEventListener('click', anonClickMenuFunct, false);
+extractlinksBtn.addEventListener('click', anonClickMenuFunct, false);
 
 postdataCbx.addEventListener('change', togglepostdata);
 refererCbx.addEventListener('change', togglereferer);
@@ -158,6 +176,26 @@ function onClickMenu(event) {
     case 'rot13':
       var txt = this.getSelectedText();
       var newString = Encrypt.rot13(txt);
+      this.setSelectedText( newString );
+      break;
+    case 'hexencode':
+      var txt = this.getSelectedText();
+      var newString = Encrypt.strToHex(txt);
+      this.setSelectedText( newString );
+      break;
+    case 'hexdecode':
+      var txt = this.getSelectedText();
+      var newString = Encrypt.hexToStr(txt);
+      this.setSelectedText( newString );
+      break;
+    case 'binaryencode':
+      var txt = this.getSelectedText();
+      var newString = Encrypt.toBinary(txt);
+      this.setSelectedText( newString );
+      break;
+    case 'binarydecode':
+      var txt = this.getSelectedText();
+      var newString = Encrypt.fromBinary(txt);
       this.setSelectedText( newString );
       break;
   }
