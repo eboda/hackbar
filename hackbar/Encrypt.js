@@ -821,5 +821,37 @@ Encrypt = {
 	      out += "" + h;
 	  }
 	  return out;
-  }
+  },
+toHex: function (s) {
+	// utf8 to latin1
+	var s = unescape(encodeURIComponent(s))
+	var h = ''
+	for (var i = 0; i < s.length; i++) {
+		h += s.charCodeAt(i).toString(16)
+	}
+	return h
+},
+fromHex: function (h) {
+	var s = ''
+	for (var i = 0; i < h.length; i+=2) {
+		s += String.fromCharCode(parseInt(h.substr(i, 2), 16))
+	}
+	return decodeURIComponent(escape(s))
+},
+toBinary: function (s) {
+	var output = ""
+    for (i=0; i < s.length; i++) {
+		 output += s[i].charCodeAt(0).toString(2) + " ";
+	}
+	return output;
+},
+
+fromBinary: function(str) {
+	var binString = '';
+	str = str.trim();
+	str.split(' ').map(function(bin) {
+		binString += String.fromCharCode(parseInt(bin, 2));
+	  });
+	return binString;
+}
 }
