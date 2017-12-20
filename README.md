@@ -18,11 +18,17 @@ The original add-on for non-Quantum builds is available at https://addons.mozill
 * Hex Encoding/Decoding
 * Binary Encoding/Decoding
 * Load, split and execute HTTP requests, This also includes the ability to manipulate POST data and your Referer
+* Extract links from current page
+* Strip spaces and slashes from strings as well as reversing them
+* XSS assistance (String.fromCharCode generation, HTML Characters and XSS Alert generation)
 
 ## Changelog
 ### 1.0.5 - First Update since the fork
 * Added Hex and Binary Encoding/Decoding
 * Added a button to open the sidebar for easier access
+* Added the "Other" section with the accompaning features (Strip Slashes, Strip Spaces, Extract Links, Reverse String)
+* Added the "XSS" section with the accompaning features (String.fromCharCode, HTML Characters and XSS Alert)
+* Fixed issue with the dropdown menus
 
 ## FAQ
 ### Can you please add move HackBar to the top of the screen?
