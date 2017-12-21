@@ -1,4 +1,5 @@
-# HackBar
+# HackBar Quantum 
+## This Add-on is available on Mozilla's Add-on site [here](https://addons.mozilla.org/en-US/firefox/addon/hackbar-quantum/)
 
 HackBar Quantum is a sidebar that assists you with web application security testing, it's aim is to help make those tedious tasks a little bit easier. This add-on is a predecessor to the original HackBar that is not compatible with Firefox Quantum.
 
@@ -21,7 +22,7 @@ The original add-on for non-Quantum builds is available at https://addons.mozill
 * Extract links from current page
 * Strip spaces and slashes from strings as well as reversing them
 * XSS assistance (String.fromCharCode generation, HTML Characters and XSS Alert generation)
-
+* Auto-XSS (Scrapes possible parameters and tests them for XSS (either using a Custom payload or a Polygot))
 ## Changelog
 ### 1.0 - First Update since the fork and initial release
 * Added Hex and Binary Encoding/Decoding
@@ -29,6 +30,9 @@ The original add-on for non-Quantum builds is available at https://addons.mozill
 * Added the "Other" section with the accompaning features (Strip Slashes, Strip Spaces, Extract Links, Reverse String)
 * Added the "XSS" section with the accompaning features (String.fromCharCode, HTML Characters and XSS Alert)
 * Fixed issue with the dropdown menus
+
+### 1.1 - First Update since the fork and initial release
+* Added Auto-XSS using a [Polygot](https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/Polyglots/XSS_Polyglots.txt) or a Custom payload
 
 ## FAQ
 ### Can you please add move HackBar to the top of the screen?
