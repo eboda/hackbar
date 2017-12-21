@@ -33,6 +33,7 @@ The original add-on for non-Quantum builds is available at https://addons.mozill
 
 ### 1.1 - First Update since the fork and initial release
 * Added Auto-XSS using a [Polygot](https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/Polyglots/XSS_Polyglots.txt) or a Custom payload
+* Added the SQL category
 
 ## FAQ
 ### Can you please add move HackBar to the top of the screen?
