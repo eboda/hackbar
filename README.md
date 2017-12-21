@@ -1,5 +1,5 @@
 # HackBar Quantum 
-## ![logo](https://github.com/notdls/HackBar/blob/master/icons/hackbar_48.png?raw=true)This Add-on is available on Mozilla's Add-on site [here](https://addons.mozilla.org/en-US/firefox/addon/hackbar-quantum/)
+## ![logo](https://github.com/notdls/hackbar/blob/master/icons/hackbar_16.png?raw=true)This Add-on is available on Mozilla's Add-on site [here](https://addons.mozilla.org/en-US/firefox/addon/hackbar-quantum/)
 
 HackBar Quantum is a sidebar that assists you with web application security testing, it's aim is to help make those tedious tasks a little bit easier. This add-on is a predecessor to the original HackBar that is not compatible with Firefox Quantum.
 
