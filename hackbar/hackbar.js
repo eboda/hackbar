@@ -83,6 +83,9 @@ var stripspacesBtn = document.getElementsByName("stripspaces")[0];
 var stripslashesBtn = document.getElementsByName("stripslashes")[0];
 var extractlinksBtn = document.getElementsByName("extractlinks")[0];
 var strreverseBtn = document.getElementsByName("strreverse")[0];
+var extractcommentsBtn = document.getElementsByName("extractcomments")[0];
+var extractregexpBtn = document.getElementsByName("extractregexp")[0];
+var stripcustomBtn = document.getElementsByName("stripcustom")[0];
 
 // XSS
 var strcharcodeBtn = document.getElementsByName("strcharcode")[0];
@@ -96,7 +99,7 @@ var mysqlcharBtn = document.getElementsByName("mysqlchar")[0];
 var mssqlcharBtn = document.getElementsByName("mssqlchar")[0];
 var oraclecharBtn = document.getElementsByName("oraclechar")[0];
 var unionselectstmntBtn = document.getElementsByName("unionselectstmnt")[0];
-var spaces2comments = document.getElementsByName("spaces2comments")[0];
+var spaces2commentsBtn = document.getElementsByName("spaces2comments")[0];
 
 var postdataCbx = document.getElementsByName("enablepostdata")[0];
 var refererCbx = document.getElementsByName("enablereferer")[0];
@@ -139,7 +142,10 @@ mysqlcharBtn.addEventListener('click', anonClickMenuFunct, false);
 mssqlcharBtn.addEventListener('click', anonClickMenuFunct, false);
 oraclecharBtn.addEventListener('click', anonClickMenuFunct, false);
 unionselectstmntBtn.addEventListener('click', anonClickMenuFunct, false);
-spaces2comments.addEventListener('click', anonClickMenuFunct, false);
+spaces2commentsBtn.addEventListener('click', anonClickMenuFunct, false);
+extractcommentsBtn.addEventListener('click', anonClickMenuFunct, false);
+extractregexpBtn.addEventListener('click', anonClickMenuFunct, false);
+stripcustomBtn.addEventListener('click', anonClickMenuFunct, false);
 
 postdataCbx.addEventListener('change', togglepostdata);
 refererCbx.addEventListener('change', togglereferer);
@@ -260,7 +266,6 @@ function onClickMenu(event) {
         };
         xhttp.open("GET", currentTabUrl, true);
         xhttp.send(); 
-
       });
       break;
     case 'strreverse':
@@ -296,15 +301,13 @@ function onClickMenu(event) {
       this.setSelectedText( newString );
       break;
     case 'autoxsspoly':
-    var payload = "eval(atob('KGZ1bmN0aW9uKCl7dmFyIHN0cj0nJzt2YXIgYXR0YWNrPSdcJzthbGVydChTdHJpbmcuZnJvbUNoYXJDb2RlKDg4LDgzLDgzKSlcL1wvXCc7YWxlcnQoU3RyaW5nLmZyb21DaGFyQ29kZSg4OCw4Myw4MykpXC9cL1wiO1xyXG5hbGVydChTdHJpbmcuZnJvbUNoYXJDb2RlKDg4LDgzLDgzKSlcL1wvXCI7YWxlcnQoU3RyaW5nLmZyb21DaGFyQ29kZSg4OCw4Myw4MykpXC9cLy0tXHJcbj48XC9TQ1JJUFQ+XCI+XCc+PFNDUklQVD5hbGVydChTdHJpbmcuZnJvbUNoYXJDb2RlKDg4LDgzLDgzKSk8XC9TQ1JJUFQ+JztpZighYXR0YWNrKXJldHVybiBmYWxzZTtmdW5jdGlvbiBnZXRhbGxlbGVtcyh2KXt2YXIgaWk9ZG9jdW1lbnQuZ2V0RWxlbWVudHNCeVRhZ05hbWUodik7Zm9yKHZhciBpPTA7aTxpaS5sZW5ndGg7aSsrKXtpZighaWlbaV0ubmFtZSljb250aW51ZTtzdHIrPShzdHI/JyYnOicnKStpaVtpXS5uYW1lKyc9JythdHRhY2s7fX1nZXRhbGxlbGVtcygnaW5wdXQnKTtnZXRhbGxlbGVtcygndGV4dGFyZWEnKTtnZXRhbGxlbGVtcygnc2VsZWN0Jyk7c3RyPWRvY3VtZW50LmxvY2F0aW9uLnNlYXJjaCsoZG9jdW1lbnQubG9jYXRpb24uc2VhcmNoLmluZGV4T2YoJz8nKT09LTE/Jz8nOicmJykrc3RyO2RvY3VtZW50LmxvY2F0aW9uLnNlYXJjaD1zdHI7fSkoKTs='))"
     var auto = browser.tabs.executeScript({
-      code: payload
+      file: 'polyglot.js'
     });
       break;
     case 'autoxsscustom':
-      var payload = "eval(atob('amF2YXNjcmlwdDooZnVuY3Rpb24oKXt2YXIgc3RyPScnO3ZhciBhdHRhY2s9cHJvbXB0KCdBdHRhY2snLCcnKTtpZighYXR0YWNrKXJldHVybiBmYWxzZTtmdW5jdGlvbiBnZXRhbGxlbGVtcyh2KXt2YXIgaWk9ZG9jdW1lbnQuZ2V0RWxlbWVudHNCeVRhZ05hbWUodik7Zm9yKHZhciBpPTA7aTxpaS5sZW5ndGg7aSsrKXtpZighaWlbaV0ubmFtZSljb250aW51ZTtzdHIrPShzdHI/JyYnOicnKStpaVtpXS5uYW1lKyc9JythdHRhY2s7fX1nZXRhbGxlbGVtcygnaW5wdXQnKTtnZXRhbGxlbGVtcygndGV4dGFyZWEnKTtnZXRhbGxlbGVtcygnc2VsZWN0Jyk7c3RyPWRvY3VtZW50LmxvY2F0aW9uLnNlYXJjaCsoZG9jdW1lbnQubG9jYXRpb24uc2VhcmNoLmluZGV4T2YoJz8nKT09LTE/Jz8nOicmJykrc3RyO2FsZXJ0KHN0cik7ZG9jdW1lbnQubG9jYXRpb24uc2VhcmNoPXN0cjt9KSgpOw=='))"
       var auto = browser.tabs.executeScript({
-        code: payload
+        file: 'custom.js'
       });
       break;
     case 'mysqlchar':
@@ -328,15 +331,65 @@ function onClickMenu(event) {
       var txt = this.getSelectedText();
       this.setSelectedText(SQL.selectionToInlineComments(txt)); 
       break;
+    case 'extractcomments':
+      browser.tabs.query({active:true,currentWindow:true}).then(function(tabs){
+        var currentTabUrl = tabs[0].url;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // Action to be performed when the document is read;
+          var rawHTML = xhttp.responseText;
+          var re =  new RegExp("<!--[^<]+-->", 'g');
+          var re2 = new RegExp("\/\*.+\*\/", 'g');
+          var result;
+          while (result = re.exec(rawHTML)){
+            urlfield.value += result + "\n";
+          }
+          while (result = re2.exec(rawHTML)){
+            urlfield.value += result + "\n";
+          }
+        }
+        };
+        xhttp.open("GET", currentTabUrl, true);
+        xhttp.send(); 
+      });
+      break;
+    case "extractregexp":
+    browser.tabs.query({active:true,currentWindow:true}).then(function(tabs){
+      var term = prompt("Regex:");
+      var currentTabUrl = tabs[0].url;
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        // Action to be performed when the document is read;
+        var rawHTML = xhttp.responseText;
+        var re =  new RegExp(term, 'g');
+        var result;
+        while (result = re.exec(rawHTML)){
+          urlfield.value += result + "\n";
+        }
+      }
+      };
+      xhttp.open("GET", currentTabUrl, true);
+      xhttp.send(); 
+    });
+    break;
+  case "stripcustom":
+    var str = prompt("String you would like to remove:")
+    var txt = this.getSelectedText();
+    var re = new RegExp(str, 'g');
+    var newString = txt.replace(re, '');
+    this.setSelectedText( newString ); 
+    break;
   }
 
-  /*var dropdowns = document.getElementsByClassName("dropdown-content");
+  var dropdowns = document.getElementsByClassName("dropdown-content");
   var i;
   for (i = 0; i < dropdowns.length; i++) {
     var openDropdown = dropdowns[i];
     openDropdown.style.visibility = "hidden";
   }
-  currentFocusField.focus();*/  
+  currentFocusField.focus();
 }
 
 /****** Load settings *****/
@@ -468,50 +521,22 @@ function execute ()
   var postData = getPostdata();
   if (typePostdata == "formdata") 
   {
-    var scriptpost = 'document.body.innerHTML += \'<form id="newhackbardynForm" action="'+ urlfield.value +'" method="post">';
-    for (var i = 0; i < postData.length; i++) {
-      var field = postData[i].split('=');
-      var fieldvalue = "";
-      if (field.length == 2) {
-        fieldvalue = field[1];
-      }
-      else if(field.length == 3){ // base64 case
-        if(field[2]==""){
-          fieldvalue = field[1] + "%3d";
-        }
-      }
-      else{
-        alert("New exception: Too much field in a variable");
-      }
-      scriptpost += '<input type="hidden" name="'+field[0]+'" value="'+fieldvalue+'">';
-    }
-    scriptpost += '</form>\';document.getElementById("newhackbardynForm").submit();'
-    var executing = browser.tabs.executeScript({
-      code: scriptpost
+    var responsePost = "";
+    var defVarCode = "var paramString='"+postdatafield.value+"'; var path='"+urlfield.value+"';";
+    browser.tabs.executeScript({
+        code: defVarCode
+    }, function() {
+        browser.tabs.executeScript({file: 'post.js'});
     });
-    executing.then(null, null);  
   }
   else // for raw data and mutilpart formdata
   {
     var responsePost = "";
-    fetch(urlfield.value, {
-      method: "POST",
-      redirect: 'follow',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Cache': 'no-cache'
-      },
-      credentials: 'include',
-      body: postdatafield.value
-      }).then(function(response) {
-      response.text().then(function (text) {
-        responsePost = text;
-        var scriptpost = 'document.body.innerHTML = unescape(\''+urlencode(responsePost)+'\');window.history.pushState("", "", \''+urlfield.value+'\');';
-        var executing = browser.tabs.executeScript({
-          code: scriptpost
-        });
-        executing.then(null, null);  
-      });
+    var defVarCode = "var paramString = '"+postdatafield.value+"';"
+    browser.tabs.executeScript({
+        code: defVarCode
+    }, function() {
+        browser.tabs.executeScript({file: 'post.js'});
     });
   }
 }

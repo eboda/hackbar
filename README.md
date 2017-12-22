@@ -33,9 +33,16 @@ The original add-on for non-Quantum builds is available at https://addons.mozill
 * Added the "XSS" section with the accompaning features (String.fromCharCode, HTML Characters and XSS Alert)
 * Fixed issue with the dropdown menus
 
-### 1.1 - First Update since the fork and initial release
+### 1.1 - Auto-XSS
 * Added Auto-XSS using a [Polygot](https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/Polyglots/XSS_Polyglots.txt) or a Custom payload
 * Added the SQL category
+
+### 1.2 - Extract all teh things
+* Extract Comments - Currently extracts HTML and JS comments (E.g. ``<!-- comment -->`` and ``/* comment */``)
+* Extract RegExp - Allows you to extract custom regex from the page
+* Strip Custom - Allows you to strip a custom string from the selected text
+* Fixed an issue with dropdowns not hiding when clicking an option
+* Fixed some issues with how the POST data worked
 
 ## FAQ
 ### Can you please add move HackBar to the top of the screen?

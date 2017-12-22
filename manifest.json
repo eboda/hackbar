@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "HackBar Quantum",
   "description": "HackBar Quantum is a sidebar that assists you with web application security testing, it's aim is to help make those tedious tasks a little bit easier. This add-on is a predecessor to the original HackBar that is not compatible with Firefox Quantum.",
-  "version": "1.1",
+  "version": "1.2",
   "applications": {
     "gecko": {
       "strict_min_version": "57.0"
@@ -18,7 +18,7 @@
   "icons": {
     "48": "icons/hackbar_48.png"
   },
-
+  
   "sidebar_action": {
     "default_icon": "icons/hackbar_48.png",
     "default_title" : "HackBar Quantum",
