@@ -28,7 +28,6 @@ The original add-on for non-Quantum builds is available at https://addons.mozill
 ### To-Do
 * Cleaner UI, including sub-menu's inside dropdown lists
 * Useful Resources/links, this would include things like links to common/popular blog posts that are helpful when pentesting against a target, e.g. WAF Bypass cheatsheets, Recon tips, reverse shell cheatsheets, etc. (unsure atm)
-* Useful strings  (Like the original, buffer overflow generation, PI, Fibonnaci as well as some new strings like payload E.g. php backdoor one liners)
 * More payloads for more advanced testing for things such as SSTI, XXE, RCE, etc. (If you have any suggestions please let me know)
 
 ## Changelog
