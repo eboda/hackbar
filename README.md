@@ -25,6 +25,12 @@ The original add-on for non-Quantum builds is available at https://addons.mozill
 * Auto-XSS (Scrapes possible parameters and tests them for XSS (either using a Custom payload or a Polygot))
 * SQL Injection Assistance
 
+### To-Do
+* Cleaner UI, including sub-menu's inside dropdown lists
+* Useful Resources/links, this would include things like links to common/popular blog posts that are helpful when pentesting against a target, e.g. WAF Bypass cheatsheets, Recon tips, reverse shell cheatsheets, etc. (unsure atm)
+* Useful strings  (Like the original, buffer overflow generation, PI, Fibonnaci as well as some new strings like payload E.g. php backdoor one liners)
+* More payloads for more advanced testing for things such as SSTI, XXE, RCE, etc. (If you have any suggestions please let me know)
+
 ## Changelog
 ### 1.0 - First Update since the fork and initial release
 * Added Hex and Binary Encoding/Decoding
@@ -43,6 +49,13 @@ The original add-on for non-Quantum builds is available at https://addons.mozill
 * Strip Custom - Allows you to strip a custom string from the selected text
 * Fixed an issue with dropdowns not hiding when clicking an option
 * Fixed some issues with how the POST data worked
+
+### 1.3 - Strings & Payloads
+* Fixed display error in the SQL dropdown
+* Changed Stripslashes back to it's original functionality
+* Added the remaining SQL options (Apologies for the clutteredness of it at the moment, I will be working on making it more user-friendly/less-cluttered in the future)
+* Added the strings section with the "Usefull strings" from the original Hackbar alongside some string manipulation (lowercase, UPPERCASE and ranDOmcase)
+* Added the Payload section with a few PHP payloads for now
 
 ## FAQ
 ### Can you please add move HackBar to the top of the screen?
