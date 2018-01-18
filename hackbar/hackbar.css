@@ -113,8 +113,11 @@ button {
 
 #primary_nav_wrap ul li:hover
 {
-  background:#ddd
+  background:#ddd;
+  right:0;
+  left:auto
 }
+
 
 #primary_nav_wrap ul ul
 {
@@ -126,16 +129,27 @@ button {
   padding:0
 }
 
+#primary_nav_wrap ul ul.dropdownright
+{
+  display:none;
+  position:absolute;
+  top:100%;
+  right:0;
+  left: auto; 
+  background:#fff;
+  padding:0
+}
+
 #primary_nav_wrap ul ul li
 {
   float:none;
-  width:140px;
+  width:135px;
 }
 
 #primary_nav_wrap ul ul a
 {
   line-height:120%;
-  padding-left: 20px;
+  padding-left:20px;
 }
 
 #primary_nav_wrap ul ul ul

@@ -29,6 +29,7 @@ The original add-on for non-Quantum builds is available at https://addons.mozill
 * Cleaner UI, including sub-menu's inside dropdown lists
 * Useful Resources/links, this would include things like links to common/popular blog posts that are helpful when pentesting against a target, e.g. WAF Bypass cheatsheets, Recon tips, reverse shell cheatsheets, etc. (unsure atm)
 * More payloads for more advanced testing for things such as SSTI, XXE, RCE, etc. (If you have any suggestions please let me know)
+* Add Bcrypt & more hashing/crypto algorithms
 
 ## Changelog
 ### 1.0 - First Update since the fork and initial release
@@ -55,6 +56,13 @@ The original add-on for non-Quantum builds is available at https://addons.mozill
 * Added the remaining SQL options (Apologies for the clutteredness of it at the moment, I will be working on making it more user-friendly/less-cluttered in the future)
 * Added the strings section with the "Usefull strings" from the original Hackbar alongside some string manipulation (lowercase, UPPERCASE and ranDOmcase)
 * Added the Payload section with a few PHP payloads for now
+
+### 1.4 
+* Added Node.js reverse shell (Bash) (Credits to [Jobert Amba]https://twitter.com/jobertabma/status/948428058687500289())
+* Moved "Auto-Pwn" functions to a seperate dropdown for easy access, this includes the Auto-XSS (Custom/Polyglot) and the new Auto-Open-Redirect
+* Added Auto-Open-Rediect - This function visits the current page with common Open-Redirect parameters in order to tests if the page is vulnerable
+* Re-wrote the creation of event listeners to make it less tedious to add new functions and be a bit more efficient
+* Fixed issue where drop-down lists on the right would go outside of the sidebar
 
 ## FAQ
 ### Can you please add move HackBar to the top of the screen?

