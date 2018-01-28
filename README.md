@@ -58,8 +58,8 @@ The original add-on for non-Quantum builds is available at https://addons.mozill
 * Added the Payload section with a few PHP payloads for now
 
 ### 1.4 
-* Added Node.js reverse shell (Bash) (Credits to [Jobert Amba]https://twitter.com/jobertabma/status/948428058687500289())
-* Moved "Auto-Pwn" functions to a seperate dropdown for easy access, this includes the Auto-XSS (Custom/Polyglot) and the new Auto-Open-Redirect
+* Added Node.js reverse shell (Bash) (Credits to [Jobert Amba](https://twitter.com/jobertabma/status/948428058687500289))
+* Moved "Auto-Pwn" functions to a separate dropdown for easy access, this includes the Auto-XSS (Custom/Polyglot) and the new Auto-Open-Redirect
 * Added Auto-Open-Rediect - This function visits the current page with common Open-Redirect parameters in order to tests if the page is vulnerable
 * Re-wrote the creation of event listeners to make it less tedious to add new functions and be a bit more efficient
 * Fixed issue where drop-down lists on the right would go outside of the sidebar
