@@ -326,12 +326,12 @@ function onClickMenu(event) {
       break;
     case 'autoxsspoly':
     var auto = browser.tabs.executeScript({
-      file: 'hackbar/polyglot.js'
+      file: 'polyglot.js'
     });
       break;
     case 'autoxsscustom':
       var auto = browser.tabs.executeScript({
-        file: 'hackbar/custom.js'
+        file: 'custom.js'
       });
       break;
     case 'mysqlchar':
@@ -473,7 +473,7 @@ function onClickMenu(event) {
     break;
   case "autoopenre":
     var auto = browser.tabs.executeScript({
-      file: 'hackbar/redirect.js'
+      file: 'redirect.js'
     });
     break; 
   }
@@ -621,7 +621,7 @@ function execute ()
     browser.tabs.executeScript({
         code: defVarCode
     }, function() {
-        browser.tabs.executeScript({file: 'hackbar/post.js'});
+        browser.tabs.executeScript({file: 'post.js'});
     });
   }
   else // for raw data and mutilpart formdata
@@ -631,7 +631,7 @@ function execute ()
     browser.tabs.executeScript({
         code: defVarCode
     }, function() {
-        browser.tabs.executeScript({file: 'hackbar/post.js'});
+        browser.tabs.executeScript({file: 'post.js'});
     });
   }
 }
