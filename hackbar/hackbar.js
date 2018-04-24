@@ -133,7 +133,10 @@ payloadBtns.push(document.getElementsByName("nodejsrevshell")[0]);
 var autopwnBtns = [];
 autopwnBtns.push(document.getElementsByName("autoopenre")[0]);
 autopwnBtns.push(document.getElementsByName("autoxsspoly")[0]);
+autopwnBtns.push(document.getElementsByName("autoxsspolyv2")[0]);
+autopwnBtns.push(document.getElementsByName("autosqli")[0]);
 autopwnBtns.push(document.getElementsByName("autoxsscustom")[0]);
+autopwnBtns.push(document.getElementsByName("autossti")[0]);
 
 // Create array of button arrays
 var allBtns = [encodingBtns, encryptionBtns, stringBtns, xssBtns, otherBtns, sqlBtns, payloadBtns, autopwnBtns];
@@ -329,6 +332,21 @@ function onClickMenu(event) {
       file: 'polyglot.js'
     });
       break;
+    case 'autossti':
+      var auto = browser.tabs.executeScript({
+        file: 'autossti.js'
+    });
+        break;
+    case 'autoxsspolyv2':
+      var auto = browser.tabs.executeScript({
+        file: 'polyglotv2.js'
+      });
+        break;
+    case 'autosqli':
+    var auto = browser.tabs.executeScript({
+      file: 'sqli.js'
+    });
+      break;
     case 'autoxsscustom':
       var auto = browser.tabs.executeScript({
         file: 'custom.js'
@@ -476,7 +494,7 @@ function onClickMenu(event) {
       file: 'redirect.js'
     });
     break; 
-  }
+  } 
 
   var dropdowns = document.getElementsByClassName("dropdown-content");
   var i;
@@ -516,9 +534,9 @@ function getSelectedText ()
   var selectionStart = this.currentFocusField.selectionStart;
   var selectionEnd = this.currentFocusField.selectionEnd;
   if ( selectionEnd - selectionStart < 1 ) {
-    return prompt( "No text was selected for the requested action", "String to use" );
+    return prompt( "No text was selected for the requested action", "String to use" ).trim();
   } else {
-    return this.currentFocusField.value.substr( selectionStart, selectionEnd - selectionStart );
+    return this.currentFocusField.value.substr( selectionStart, selectionEnd - selectionStart ).trim();
   }
 }
 
@@ -644,6 +662,7 @@ function splitUrl ()
   currentFocusField.value = uri;
   return true;
 }
+
 
 function savePostdata(requestDetails) {
   var datapost = "";

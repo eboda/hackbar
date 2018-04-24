@@ -1,8 +1,7 @@
 (function() {
     var str = '';
-    var attack = prompt('Payload', '');
+    var attack = '\'';
     if (!attack) return false;
-
     function getallelems(v) {
         var ii = document.getElementsByTagName(v);
         for (var i = 0; i < ii.length; i++) {
@@ -14,6 +13,5 @@
     getallelems('textarea');
     getallelems('select');
     str = document.location.search + (document.location.search.indexOf('?') == -1 ? '?' : '&') + str;
-    alert(str);
     document.location.search = str;
 })();

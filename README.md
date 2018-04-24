@@ -64,6 +64,14 @@ The original add-on for non-Quantum builds is available at https://addons.mozill
 * Re-wrote the creation of event listeners to make it less tedious to add new functions and be a bit more efficient
 * Fixed issue where drop-down lists on the right would go outside of the sidebar
 
+### 1.5 - Small fix
+* Fixed an issue with the Auto-Pwn category
+
+### 1.6 - Bug fixes and small feature update
+* Fixed an issue with trailing/pre-pending newlines and spaces when using the Hashing and Encoding functions
+* Added Auto-SQLi, Auto-SSTI (just basic {{7*7}}) and A new XSS Polyglot (Credits to [0xSobky](https://github.com/0xsobky/HackVault/wiki/Unleashing-an-Ultimate-XSS-Polyglot))
+* Renamed XSS (Custom) to Payload (Custom) as it can be used for anything not just XSS
+
 ## FAQ
 ### Can you please add move HackBar to the top of the screen?
 Unfortunately not, as fair as I'm aware it isn't possible with Firefox's new policies.
