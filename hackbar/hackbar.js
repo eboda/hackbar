@@ -21,6 +21,7 @@ window.addEventListener("mouseout", () => {
   });
 });
 
+
 /* Update the sidebar's content. */
 function updateContent() {
   browser.tabs.query({windowId: myWindowId, active: true})
@@ -183,6 +184,21 @@ refererfield.addEventListener('focus', anonFocusFunct, false );
 urlfield.addEventListener('click', onFieldClick, false );
 postdatafield.addEventListener('click', onFieldClick, false );
 refererfield.addEventListener('click', onFieldClick, false );
+
+// Parse commands
+browser.commands.onCommand.addListener(function(command) {
+  switch(command){
+    case "do-command-execute":
+      execute();
+      break;
+    case "do-command-loadurl":
+      loadURL();
+      break;
+    case "do-command-spliturl":
+      splitUrl();
+      break;
+  }
+});
 
 function onFieldFocus ( event ){
   currentFocusField = event.currentTarget;

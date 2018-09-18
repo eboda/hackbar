@@ -44,6 +44,24 @@
       "suggested_key": {
         "default": "F9"
       }
+    },
+    "do-command-execute": {
+      "suggested_key": {
+        "default": "Alt+X",
+        "mac": "MacCtrl+X"
+      }
+    },
+    "do-command-loadurl": {
+      "suggested_key": {
+        "default": "Alt+Y",
+        "mac": "MacCtrl+Z"
+      }
+    },
+    "do-command-spliturl": {
+      "suggested_key": {
+        "default": "Alt+S",
+        "mac": "MacCtrl+S"
+      }
     }
   }
 
